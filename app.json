@@ -10,6 +10,6 @@
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "scripts": {
-    "postdeploy": "pg_restore --verbose --no-acl --no-owner -d$DATABASE_URL db/seed_db.dump"
+    "postdeploy": "pg_restore --verbose --no-acl --no-owner -d$DATABASE_URL db/seed_db.dump ; echo 'Ignoring warnings! Setting exit status to 0'"
   }
 }
