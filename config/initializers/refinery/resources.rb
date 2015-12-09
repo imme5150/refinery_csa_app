@@ -20,10 +20,10 @@ Refinery::Resources.configure do |config|
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
   # config.dragonfly_insert_before = "ActionDispatch::Callbacks"
-  # config.dragonfly_secret = "af86d3b7f365ef9b6ca15f91b89e4a9f2109c4fd31d80635"
+  # config.dragonfly_secret = ""
   # config.dragonfly_url_format = "/system/resources/:job/:basename.:ext"
   # config.dragonfly_url_host = ""
-  # config.datastore_root_path = "/Users/shup_d/current_apps/CSA app/csa_app/public/system/refinery/resources"
+  # config.datastore_root_path = ""
   # config.content_disposition = :attachment
 
   # Configure Dragonfly custom storage backend

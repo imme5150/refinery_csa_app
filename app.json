@@ -1,7 +1,7 @@
 {
   "name": "Refinery CSA App",
   "description": "A CMS template for CSAs to communicate w/ thier members.",
-  "success_url": "/",
+  "success_url": "/admin/users/register",
   "addons": ["heroku-postgresql:hobby-dev", "newrelic:wayne", "raygun:intro"],
   "env": {
     "RACK_ENV": "production",
@@ -10,6 +10,6 @@
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
+    "postdeploy": "bundle exec rake db:schema:load db:seed"
   }
 }
