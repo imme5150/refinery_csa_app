@@ -7,7 +7,7 @@
     "RACK_ENV": "production",
     "RAILS_ENV": "production",
     "DRAGONFLY_SECRET": { "generator": "secret" },
-    "SECRET_KEY_BASE": { "generator": "secret" },
+    "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
