@@ -10,6 +10,6 @@
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:seed"
+    "postdeploy": "pg_restore --verbose --clean --no-acl --no-owner -d$DATABASE_URL db/seed_db.dump"
   }
 }
