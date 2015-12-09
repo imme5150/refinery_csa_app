@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+  <% @content_page = @page.nil? || @page.link_url != '/' && @page.children.live.in_menu.empty? %>
+  <%= render "/refinery/html_tag" %>
+  <% site_bar = render('/refinery/site_bar', :head => true) -%>
+  <head>
+    <%= render "/refinery/head" %>
+  </head>
+  <body id="<%= canonical_id @page %>" class="no-margin">
+    <%= site_bar -%>
+    <% if @content_page %>
+      <div class="wrap">
+        <nav class="menu clearfix" id="menu">
+          <%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+        </nav>
+        <div class="nav-trigger">
+          <form id="search_form" class="inner-search" method="get" accept-charset="UTF-8" action="/search">
+            <input type="hidden" value="✓" name="utf8">
+            <input id="query" type="search" placeholder="Enter search..." name="query" value="<%= params[:query] %>">
+            <input type="submit" value="&raquo;" name="commit">
+          </form>
+          <a href="#menu" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+        </div>
+        <div class="breadcrumbs">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <% if @page %>
+              <% [@page.ancestors].flatten.each do |p| %>
+                <li><%= link_to p.title, p.url %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="content">
+          <h1><%= @page.try(:title) || "Search Results for '#{params[:query]}'" %></h1>
+          <%= yield %>
+        </div>
+        <footer><%= image_tag(Refinery::Setting.get(:footer_image_url)) if Refinery::Setting.find_or_set(:footer_image_url,'').present? %>
+          <p><%= Refinery::Setting.get(:site_name) %></p>
+        </footer>
+      </div>
+    <% else %>
+      <nav class="menu clearfix" id="menu">
+        <div class="wrap">
+          <a href="#" class="logo"><%= image_tag(Refinery::Setting.get(:header_image_url)) if Refinery::Setting.find_or_set(:header_image_url,'').present? %></a>
+          <%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+          <footer class="home-page"><p><%= Refinery::Setting.get(:site_name) %></p></footer>
+        </div>
+      </nav>
+    <% end %>
+    <%= render "/refinery/javascripts" %>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $("#menu").mmenu({
+        // counters: true,
+        'offCanvas':
+        <% if @content_page %>
+          { 'position': "right" }
+        <% else %>
+          false
+        <% end %>
+      }, { // configuration
+        classNames: {
+           selected: 'selected'
+        }
+      });
+      <% if @page && @page.link_url == '/' %>
+        addToHomescreen({
+          lifespan: 0,
+          maxDisplayCount: 10,
+          detectHomescreen: 'hash'
+        })
+      <% end %>
+    });
+    </script>
+    <% if @page && @page.link_url == '/' %>
+      <span id="search_form" style="display:none;">
+        <form method="get" accept-charset="UTF-8" action="/search">
+          <input type="hidden" value="✓" name="utf8">
+          <input id="query" type="search" placeholder="Enter search..." name="query">
+          <input type="submit" value="&raquo;" name="commit">
+        </form>
+      </span>
+    <% end %>
+  </body>
+</html>
