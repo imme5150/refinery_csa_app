@@ -1,6 +1,12 @@
 <meta charset='<%= Rails.application.config.encoding %>' />
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 <title><%= browser_title(yield(:title)) %></title>
+<% if Refinery::Setting.find_or_set(:favicon_url,'').present? %>
+  <link rel="icon" href="<%= Refinery::Setting.get(:favicon_url) %>" type="image/x-icon" />
+<% end %>
+<% if Refinery::Setting.find_or_set(:apple_touch_icon_url,'').present? %>
+  <link href="<%= Refinery::Setting.get(:apple_touch_icon_url) %>" rel="apple-touch-icon" />
+<% end %>
 <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
 <%= raw %(<link rel="canonical" href="#{request.protocol}#{request.host_with_port}#{@canonical}" />) if @canonical.present? -%>
 <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
