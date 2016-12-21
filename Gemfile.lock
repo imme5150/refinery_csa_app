@@ -8,6 +8,15 @@ GIT
       refinerycms-core (~> 3.0, >= 3.0.0)
 
 GIT
+  remote: https://github.com/menunextdoor/dragonfly-cloudinary.git
+  revision: e3319b702cb5d3090bf38fc4958bb933b1976da4
+  specs:
+    dragonfly-cloudinary (0.1.1)
+      cloudinary (>= 1.0)
+      dragonfly (>= 0.9)
+      rake (>= 0.9)
+
+GIT
   remote: https://github.com/refinery/refinerycms
   revision: 57037abc9055fdb59149db70c6b1bf5fb25f6ae1
   branch: master
@@ -134,10 +143,6 @@ GEM
       addressable (~> 2.3)
       multi_json (~> 1.0)
       rack (>= 1.3.0)
-    dragonfly-cloudinary (0.1.1)
-      cloudinary (>= 1.0)
-      dragonfly (>= 0.9)
-      rake (>= 0.9)
     erubis (2.7.0)
     execjs (2.6.0)
     friendly_id (5.1.0)
@@ -306,7 +311,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  dragonfly-cloudinary
+  dragonfly-cloudinary!
   heroku_rails_deflate
   jbuilder (~> 2.0)
   jquery-rails

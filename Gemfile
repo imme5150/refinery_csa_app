@@ -57,7 +57,7 @@ gem 'quiet_assets', group: :development
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
 gem 'refinerycms-settings', git: 'https://github.com/imme5150/refinerycms-settings.git', branch: 'master'
 
-gem 'dragonfly-cloudinary'
+gem 'dragonfly-cloudinary', git: 'https://github.com/menunextdoor/dragonfly-cloudinary.git'
 gem 'refinerycms-search', git: 'https://github.com/refinery/refinerycms-search.git', ref:'aa8098cd0c159b72174daa1e8195dd797773d948'
 
 # Add support for searching inside Refinery's admin interface.
