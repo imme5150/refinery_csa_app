@@ -1,20 +1,11 @@
 GIT
-  remote: git://github.com/imme5150/refinerycms-settings.git
+  remote: https://github.com/imme5150/refinerycms-settings.git
   revision: 4a789d8ee9f976acfe87be7e184ef86ad86fb6eb
   branch: master
   specs:
     refinerycms-settings (3.0.0)
       friendly_id (~> 5.0, >= 5.0.1)
       refinerycms-core (~> 3.0, >= 3.0.0)
-
-GIT
-  remote: git://github.com/refinery/refinerycms-search.git
-  revision: aa8098cd0c159b72174daa1e8195dd797773d948
-  branch: master
-  specs:
-    refinerycms-search (3.0.0)
-      refinerycms-acts-as-indexed (~> 2.0.1)
-      refinerycms-core (~> 3.0.0)
 
 GIT
   remote: https://github.com/refinery/refinerycms
@@ -57,6 +48,15 @@ GIT
       dragonfly (~> 1.0.0)
       globalize (>= 4.0.0, < 5.2)
       refinerycms-core (= 3.0.0)
+
+GIT
+  remote: https://github.com/refinery/refinerycms-search.git
+  revision: aa8098cd0c159b72174daa1e8195dd797773d948
+  ref: aa8098cd0c159b72174daa1e8195dd797773d948
+  specs:
+    refinerycms-search (3.0.0)
+      refinerycms-acts-as-indexed (~> 2.0.1)
+      refinerycms-core (~> 3.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -101,12 +101,16 @@ GEM
     arel (6.0.3)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
+    aws_cf_signer (0.1.3)
     babosa (1.0.2)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (6.0.2)
+    cloudinary (1.2.4)
+      aws_cf_signer
+      rest-client
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -124,35 +128,18 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    domain_name (0.5.20161129)
+      unf (>= 0.0.5, < 1.0.0)
     dragonfly (1.0.10)
       addressable (~> 2.3)
       multi_json (~> 1.0)
       rack (>= 1.3.0)
-    dragonfly-s3_data_store (1.2)
-      dragonfly (~> 1.0)
-      fog-aws
+    dragonfly-cloudinary (0.1.1)
+      cloudinary (>= 1.0)
+      dragonfly (>= 0.9)
+      rake (>= 0.9)
     erubis (2.7.0)
-    excon (0.45.4)
     execjs (2.6.0)
-    fog-aws (0.7.4)
-      fog-core (~> 1.27)
-      fog-json (~> 1.0)
-      fog-xml (~> 0.1)
-      ipaddress (~> 0.8)
-    fog-core (1.32.1)
-      builder
-      excon (~> 0.45)
-      formatador (~> 0.2)
-      mime-types
-      net-scp (~> 1.1)
-      net-ssh (>= 2.1.3)
-    fog-json (1.0.2)
-      fog-core (~> 1.0)
-      multi_json (~> 1.10)
-    fog-xml (0.1.2)
-      fog-core
-      nokogiri (~> 1.5, >= 1.5.11)
-    formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.3.6)
@@ -164,11 +151,12 @@ GEM
       actionpack (>= 3.2.13)
       activesupport (>= 3.2.13)
       rack (>= 1.4.5)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    ipaddress (0.8.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -189,9 +177,7 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.9.2)
+    netrc (0.11.0)
     newrelic_rpm (3.13.0.299)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -258,6 +244,10 @@ GEM
       refinerycms-core (~> 3.0, >= 3.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rest-client (2.0.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     routing-filter (0.5.0)
       actionpack (~> 4.2)
       activesupport (~> 4.2)
@@ -293,6 +283,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     unicorn (4.9.0)
       kgio (~> 2.6)
       rack
@@ -313,7 +306,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  dragonfly-s3_data_store
+  dragonfly-cloudinary
   heroku_rails_deflate
   jbuilder (~> 2.0)
   jquery-rails
@@ -338,5 +331,8 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
 
+RUBY VERSION
+   ruby 2.2.6p396
+
 BUNDLED WITH
-   1.10.6
+   1.13.6

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.2.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -55,10 +55,10 @@ gem 'quiet_assets', group: :development
 
 
 gem 'refinerycms', git: 'https://github.com/refinery/refinerycms', branch: 'master'
-gem 'refinerycms-settings', github: 'imme5150/refinerycms-settings', branch: 'master'
+gem 'refinerycms-settings', git: 'https://github.com/imme5150/refinerycms-settings.git', branch: 'master'
 
-gem 'dragonfly-s3_data_store'
-gem 'refinerycms-search', github: 'refinery/refinerycms-search', branch: 'master'
+gem 'dragonfly-cloudinary'
+gem 'refinerycms-search', git: 'https://github.com/refinery/refinerycms-search.git', ref:'aa8098cd0c159b72174daa1e8195dd797773d948'
 
 # Add support for searching inside Refinery's admin interface.
 gem 'refinerycms-acts-as-indexed', ['~> 2.0', '>= 2.0.0']
