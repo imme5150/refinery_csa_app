@@ -2,7 +2,7 @@
   "name": "Refinery CSA App",
   "description": "A CMS template for CSAs to communicate w/ thier members.",
   "success_url": "/admin/users/register",
-  "addons": ["heroku-postgresql:hobby-dev", "newrelic:wayne", "raygun:intro"],
+  "addons": ["heroku-postgresql:hobby-dev", "newrelic:wayne", "raygun:intro", "cloudinary:starter"],
   "env": {
     "RACK_ENV": "production",
     "RAILS_ENV": "production",
