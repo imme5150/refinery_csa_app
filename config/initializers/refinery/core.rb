@@ -9,11 +9,11 @@ Refinery::Core.configure do |config|
   if Refinery::Setting.table_exists?
     # When true will use Amazon's Simple Storage Service instead of
     # the default file system for storing resources and images
-    config.s3_backend = true #!(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
-    config.s3_region = Refinery::Setting.find_or_set(:amazon_s3_region, 'us-west-2')
-    config.s3_secret_access_key = Refinery::Setting.find_or_set(:amazon_s3_secret_access_key, 'Paste your Amazon S3 Secret Access Key here')
-    config.s3_access_key_id = Refinery::Setting.find_or_set(:amazon_s3_access_key_id, 'Paste your Amazon S3 Access Key ID here')
-    config.s3_bucket_name = Refinery::Setting.find_or_set(:amazon_s3_bucket_name, 'Paste your Amazon S3 Bucket Name here')
+    # config.s3_backend = true #!(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
+    # config.s3_region = Refinery::Setting.find_or_set(:amazon_s3_region, 'us-west-2')
+    # config.s3_secret_access_key = Refinery::Setting.find_or_set(:amazon_s3_secret_access_key, 'Paste your Amazon S3 Secret Access Key here')
+    # config.s3_access_key_id = Refinery::Setting.find_or_set(:amazon_s3_access_key_id, 'Paste your Amazon S3 Access Key ID here')
+    # config.s3_bucket_name = Refinery::Setting.find_or_set(:amazon_s3_bucket_name, 'Paste your Amazon S3 Bucket Name here')
 
     # Site name
     config.site_name = Refinery::Setting.find_or_set(:site_name, 'Site Name')
@@ -21,7 +21,7 @@ Refinery::Core.configure do |config|
 
   # Use a custom Dragonfly storage backend instead of the default
   # file system for storing resources and images
-  # config.dragonfly_custom_backend_class = nil
+  config.dragonfly_custom_backend_class = 'Dragonfly::DataStorage::CloudinaryStore'
   # config.dragonfly_custom_backend_opts = {}
 
   # Whenever Refinery caches anything and can set a cache key, it will add
