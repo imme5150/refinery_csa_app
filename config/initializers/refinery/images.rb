@@ -37,11 +37,11 @@ Refinery::Images.configure do |config|
   # This is where in the middleware stack to insert the Dragonfly middleware
   # config.dragonfly_insert_before = "ActionDispatch::Callbacks"
   config.dragonfly_secret = ENV['DRAGONFLY_SECRET']
-  config.dragonfly_url_format = "/system/images/:job/:basename.:ext"
-
-  if Refinery::Setting.table_exists?
-    config.dragonfly_url_host = "http://#{Refinery::Setting.get(:amazon_s3_bucket_name)}.s3.amazonaws.com"
-  end
+  # config.dragonfly_url_format = "/system/images/:job/:basename.:ext"
+  #
+  # if Refinery::Setting.table_exists?
+  #   config.dragonfly_url_host = "http://#{Refinery::Setting.get(:amazon_s3_bucket_name)}.s3.amazonaws.com"
+  # end
 
   # config.datastore_root_path = "public/system/refinery/images"
 
