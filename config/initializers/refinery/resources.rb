@@ -18,6 +18,7 @@ Refinery::Resources.configure do |config|
   # config.s3_region = ENV['S3_REGION']
 
   # Configure Dragonfly
+  config.dragonfly_verify_urls = false # SHAs were causing issues
   # This is where in the middleware stack to insert the Dragonfly middleware
   # config.dragonfly_insert_before = "ActionDispatch::Callbacks"
   # config.dragonfly_secret = ""
